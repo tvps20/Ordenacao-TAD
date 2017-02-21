@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 //package implementacao2;
 
-
 public class BrincandoComOrdenacao {
     
     public static void main(String[] args) {

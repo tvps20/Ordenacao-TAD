@@ -1,4 +1,4 @@
-package implementacao2;
+//package implementacao2;
 
 public interface Fila_IF {
 	public void enqueue(int element) throws Exception;
