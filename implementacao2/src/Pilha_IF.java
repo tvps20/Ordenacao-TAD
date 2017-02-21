@@ -1,4 +1,4 @@
-package implementacao2;
+//package implementacao2;
 
 public interface Pilha_IF {
 	public void push(int element) throws Exception;
