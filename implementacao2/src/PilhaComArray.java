@@ -34,7 +34,7 @@ public class PilhaComArray implements Pilha_IF
     @Override
     public int top() throws Exception {
         if(isEmpty())
-            throw new Exception("Underflow");
+            throw new Exception("Pilha Vazia");
         else
             return pilha[top];
     }
