@@ -1,8 +1,8 @@
 public class FilaComArray implements Fila_IF 
 {
-    int[] fila;
-    int cabeca;
-    int calda;
+    private int[] fila;
+    private int cabeca;
+    private int calda;
     
     public FilaComArray()
     {
