@@ -1,7 +1,7 @@
 public class PilhaComArray implements Pilha_IF 
 {
-    int[] pilha;
-    int top;
+    private int[] pilha;
+    private int top;
     
     public PilhaComArray()
     {
