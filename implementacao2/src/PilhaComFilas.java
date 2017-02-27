@@ -1,4 +1,6 @@
-public class PilhaComFilas implements Pilha_IF {
+public class PilhaComFilas implements Pilha_IF 
+{
+    private FilaComArray pilha = new FilaComArray();
 
     @Override
     public void push(int element) throws Exception {
@@ -12,17 +14,17 @@ public class PilhaComFilas implements Pilha_IF {
 
     @Override
     public int top() throws Exception {
-        return 0;
+        return 0;       
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return pilha.isEmpty();
     }
 
     @Override
     public boolean isFull() {
-        return false;
+        return pilha.isFull();
     }
     
 }
