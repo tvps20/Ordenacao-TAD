@@ -53,6 +53,5 @@ public class PilhaComArray implements Pilha_IF
             return true;
         else
             return false;
-    }
-    
+    }   
 }
