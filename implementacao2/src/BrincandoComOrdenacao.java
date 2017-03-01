@@ -9,7 +9,7 @@ public class BrincandoComOrdenacao {
         //TODO Codifique o experimento pedido. Crie metodos auxiliares para facilitar.
 	
 	int[] inteiros = new int[2000];
-        int posicao = 0;
+        //int posicao = 0;
         
         //Incializando o vetor com elementos
         
@@ -21,16 +21,14 @@ public class BrincandoComOrdenacao {
             //inteiros[i] = i; //Gerando a lista com a entrada ordenada
             //inteiros[posicao] = i; //Gerando a lista com a entrada ordenada inversamente
             //posicao++;
-        }
-               
-        int[] inteirosCopia = inteiros.clone();
+        }              
             
             System.out.println("Lista com entrada inicia");
             System.out.println(Arrays.toString(inteiros));                       
         
         //Calculando o tempo de execução depois da ordenação e o tempo final
             long tempoAntesB = System.nanoTime();
-            bubbleSort(inteiros);
+            bubbleSort(inteiros.clone());
             long tempoDepoisB = System.nanoTime();
             long tempoFinalB = tempoDepoisB - tempoAntesB;
             System.out.println(); // Pulando linha
@@ -38,7 +36,7 @@ public class BrincandoComOrdenacao {
             System.out.println(tempoFinalB);
             
             long tempoAntesS = System.nanoTime();
-            selectionSort(inteiros);
+            selectionSort(inteiros.clone());
             long tempoDepoisS = System.nanoTime();
             long tempoFinalS = tempoDepoisS - tempoAntesS;
             System.out.println(); // Pulando linha
@@ -46,7 +44,7 @@ public class BrincandoComOrdenacao {
             System.out.println(tempoFinalS);
             
             long tempoAntesI = System.nanoTime();
-            insertionSort(inteiros);
+            insertionSort(inteiros.clone());
             long tempoDepoisI = System.nanoTime();
             long tempoFinalI = tempoDepoisI - tempoAntesI;
             System.out.println(); // Pulando linha
@@ -54,7 +52,7 @@ public class BrincandoComOrdenacao {
             System.out.println(tempoFinalI);
             
             long tempoAntesM = System.nanoTime();
-            mergeSort(inteiros);
+            mergeSort(inteiros.clone());
             long tempoDepoisM = System.nanoTime();
             long tempoFinalM = tempoDepoisM - tempoAntesM;
             System.out.println(); // Pulando linha
@@ -62,7 +60,7 @@ public class BrincandoComOrdenacao {
             System.out.println(tempoFinalM);
             
             long tempoAntesQ = System.nanoTime();
-            quickSort(inteiros);
+            quickSort(inteiros.clone());
             long tempoDepoisQ = System.nanoTime();
             long tempoFinalQ = tempoDepoisQ - tempoAntesQ;
             System.out.println(); // Pulando linha
@@ -77,9 +75,9 @@ public class BrincandoComOrdenacao {
             System.out.println("Tempo de execursão C:");
             System.out.println(tempoFinalC);
             
-            System.out.println(); //Pulando linha
-            System.out.println("Lista ordenada");
-            System.out.println(Arrays.toString(inteiros));
+            //System.out.println(); //Pulando linha
+            //System.out.println("Lista ordenada");
+            //System.out.println(Arrays.toString(inteiros));
             
             
     }
@@ -257,12 +255,12 @@ public class BrincandoComOrdenacao {
         
         public static int acharDominio(int[] vetor)
         {
-            int maior = 0;
+            int maior = vetor[0];
             
-            for(int i=0; i<vetor.length; i++)
+            for(int i=1; i<vetor.length; i++)
             {
                 if(vetor[i] > maior)
-                    maior = vetor[i] + 1;
+                    maior = vetor[i];
             }
             
             return maior;
@@ -272,8 +270,8 @@ public class BrincandoComOrdenacao {
 	//ALGORITMO COUNTING SORT
 	public static void countingSort(int[] vetor){
 		//TODO ...
-                int dominio = acharDominio(vetor);
-		int[] vetorB = new int[vetor.length];
+                int dominio = acharDominio(vetor) +1;
+                int[] vetorB = new int[vetor.length];
 		int[] vetorC = new int[dominio];
 
 		for(int j=0; j<vetor.length; j++)
