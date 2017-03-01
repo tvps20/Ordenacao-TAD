@@ -7,17 +7,23 @@ public class BrincandoComOrdenacao {
     public static void main(String[] args) {
         //TODO Codifique o experimento pedido. Crie metodos auxiliares para facilitar.
 	
-	int[] inteiros = {23, 8, 4, 3, 2, 1, 1};
+	int[] inteiros = {23, 8, 4, 3, 2, 1, 0};
+        int[] inteirosCopia = inteiros.clone();
+                              
+            System.out.println(Arrays.toString(inteiros));
+            //Calculando o tempo de execução
+            long tempoAntes = System.nanoTime();
+            //bubbleSort(inteiros);
+            //selectionSort(inteiros);
+            //insertionSort(inteiros);
+            //mergeSort(inteiros);
+            quickSort(inteiros);
+            //countingSort(inteiros);
+            long tempoDepois = System.nanoTime();
+            long tempoFinal = tempoDepois - tempoAntes;
+            System.out.println(tempoFinal);
 
-		System.out.println(Arrays.toString(inteiros));
-		//bubbleSort(inteiros);
-		//selectionSort(inteiros);
-		//insertionSort(inteiros);
-		//mergeSort(inteiros, 0, inteiros.length -1);
-		//quickSort(inteiros, 0, inteiros.length -1);
-		countingSort(inteiros);
-                System.out.println(Arrays.toString(inteiros));
-
+            System.out.println(Arrays.toString(inteiros));
     }
 	
 	//Metodo de Troca
@@ -125,23 +131,31 @@ public class BrincandoComOrdenacao {
 			j++;
 			k++;
 		}
-
 	}
+        
+        //Metodo Auxiliar para o mergeSorte receber como paramentro apenas um Vetor
+        public static void mergeSortAux(int[] vetor, int indiceInicio, int indiceFim)
+        {
+            if((indiceInicio < indiceFim) && (indiceFim >= 0))
+            {
+                int meio = ((indiceFim + indiceInicio)/2);
+
+                mergeSortAux(vetor, indiceInicio, meio);
+                mergeSortAux(vetor, meio +1, indiceFim);
+
+                mergeTheTwoSortedLists(vetor, indiceInicio, meio, indiceFim);
+
+            }
+        }
 
 
 	//ALGORITMO MERGE SORT
-	public static void mergeSort(int[] vetor, int indiceInicio, int indiceFim) {
-		//TODO ...
-		if((indiceInicio < indiceFim) && (indiceFim >= 0))
-		{
-			int meio = ((indiceFim + indiceInicio)/2);
-
-			mergeSort(vetor, indiceInicio, meio);
-			mergeSort(vetor, meio +1, indiceFim);
-
-			mergeTheTwoSortedLists(vetor, indiceInicio, meio, indiceFim);
-
-		}
+	public static void mergeSort(int[] vetor) {
+            //TODO ...
+            int indiceInicio = 0;
+            int indiceFim = vetor.length -1;
+            
+            mergeSortAux(vetor, indiceInicio, indiceFim);
 	}
 
 	public static int separar(int[] vetor, int esquerda, int direita)
@@ -163,18 +177,24 @@ public class BrincandoComOrdenacao {
 		return j; //posição do pivo
 	}
 	
+        //Metodo auxiliar para o quickSort receber apenas um vetor como parametro.
+        public static void quickSortAux(int[] vetor, int esquerda, int direita)
+        {
+            if(esquerda < direita)
+            {
+                int pivo = separar(vetor, esquerda, direita);
+                quickSortAux(vetor, esquerda, pivo -1);
+                quickSortAux(vetor, pivo +1, direita);
+            }
+        }
+        
 	//ALGORITMO QUICKSORT
-	public static void quickSort(int[] vetor, int esquerda, int direita) {
-		//TODO ...
-                //int esquerda = 0;
-                //int direita = vetor.length - 1;
+	public static void quickSort(int[] vetor) {
+		//TODO ...  
+                int esquerda = 0;
+                int direita = vetor.length -1;
                 
-		if(esquerda < direita)
-		{
-			int pivo = separar(vetor, esquerda, direita);
-			quickSort(vetor, esquerda, pivo -1);
-			quickSort(vetor, pivo +1, direita);
-		}
+		quickSortAux(vetor, esquerda, direita);
 	}
         
         public static int acharDominio(int[] vetor)
