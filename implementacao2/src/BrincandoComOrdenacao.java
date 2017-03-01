@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 //package implementacao2;
 
@@ -7,23 +8,80 @@ public class BrincandoComOrdenacao {
     public static void main(String[] args) {
         //TODO Codifique o experimento pedido. Crie metodos auxiliares para facilitar.
 	
-	int[] inteiros = {23, 8, 4, 3, 2, 1, 0};
+	int[] inteiros = new int[2000];
+        int posicao = 0;
+        
+        //Incializando o vetor com elementos
+        
+        //for(int i=0; i<inteiros.length; i++)
+        for(int i=inteiros.length -1; i>=0; i--)
+        {
+            int randomNum = new Random().nextInt(inteiros.length); //Gerando numero aleatorios com limite o tamanho da lista
+            inteiros[i] = randomNum; //Gerando a lista com a entrada aleatória
+            //inteiros[i] = i; //Gerando a lista com a entrada ordenada
+            //inteiros[posicao] = i; //Gerando a lista com a entrada ordenada inversamente
+            //posicao++;
+        }
+               
         int[] inteirosCopia = inteiros.clone();
-                              
-            System.out.println(Arrays.toString(inteiros));
-            //Calculando o tempo de execução
-            long tempoAntes = System.nanoTime();
-            //bubbleSort(inteiros);
-            //selectionSort(inteiros);
-            //insertionSort(inteiros);
-            //mergeSort(inteiros);
+            
+            System.out.println("Lista com entrada inicia");
+            System.out.println(Arrays.toString(inteiros));                       
+        
+        //Calculando o tempo de execução depois da ordenação e o tempo final
+            long tempoAntesB = System.nanoTime();
+            bubbleSort(inteiros);
+            long tempoDepoisB = System.nanoTime();
+            long tempoFinalB = tempoDepoisB - tempoAntesB;
+            System.out.println(); // Pulando linha
+            System.out.println("Tempo de execursão b:");
+            System.out.println(tempoFinalB);
+            
+            long tempoAntesS = System.nanoTime();
+            selectionSort(inteiros);
+            long tempoDepoisS = System.nanoTime();
+            long tempoFinalS = tempoDepoisS - tempoAntesS;
+            System.out.println(); // Pulando linha
+            System.out.println("Tempo de execursão S:");
+            System.out.println(tempoFinalS);
+            
+            long tempoAntesI = System.nanoTime();
+            insertionSort(inteiros);
+            long tempoDepoisI = System.nanoTime();
+            long tempoFinalI = tempoDepoisI - tempoAntesI;
+            System.out.println(); // Pulando linha
+            System.out.println("Tempo de execursão I:");
+            System.out.println(tempoFinalI);
+            
+            long tempoAntesM = System.nanoTime();
+            mergeSort(inteiros);
+            long tempoDepoisM = System.nanoTime();
+            long tempoFinalM = tempoDepoisM - tempoAntesM;
+            System.out.println(); // Pulando linha
+            System.out.println("Tempo de execursão M:");
+            System.out.println(tempoFinalM);
+            
+            long tempoAntesQ = System.nanoTime();
             quickSort(inteiros);
-            //countingSort(inteiros);
-            long tempoDepois = System.nanoTime();
-            long tempoFinal = tempoDepois - tempoAntes;
-            System.out.println(tempoFinal);
-
+            long tempoDepoisQ = System.nanoTime();
+            long tempoFinalQ = tempoDepoisQ - tempoAntesQ;
+            System.out.println(); // Pulando linha
+            System.out.println("Tempo de execursão Q:");
+            System.out.println(tempoFinalQ);
+            
+            long tempoAntesC = System.nanoTime();
+            countingSort(inteiros);
+            long tempoDepoisC = System.nanoTime();
+            long tempoFinalC = tempoDepoisC - tempoAntesC;
+            System.out.println(); // Pulando linha
+            System.out.println("Tempo de execursão C:");
+            System.out.println(tempoFinalC);
+            
+            System.out.println(); //Pulando linha
+            System.out.println("Lista ordenada");
             System.out.println(Arrays.toString(inteiros));
+            
+            
     }
 	
 	//Metodo de Troca
