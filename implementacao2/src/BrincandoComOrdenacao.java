@@ -85,108 +85,108 @@ public class BrincandoComOrdenacao {
 	//Metodo de Troca
 	public static  void troca(int[] vetor, int i, int j)
 	{
-		int aux = vetor[i];
-		vetor[i] = vetor[j];
-		vetor[j] = aux;
+            int aux = vetor[i];
+            vetor[i] = vetor[j];
+            vetor[j] = aux;
 	}
 
 
 	//ALGORITMO BUBBLE SORT
 	public static void bubbleSort(int[] vetor){
-		//TODO ...
-		int tamanhoVetor = vetor.length;
+            //TODO ...
+            int tamanhoVetor = vetor.length;
 
-		for(int i=0; i<tamanhoVetor-1; i++)
-		{
-			for(int j=0; j<tamanhoVetor-1; j++)
-			{
-				if(vetor[j] > vetor[j+1])
-				{
-					troca(vetor, j, j+1);
-				}
-			}
-		}
+            for(int i=0; i<tamanhoVetor-1; i++)
+            {
+                for(int j=0; j<tamanhoVetor-1; j++)
+                {
+                    if(vetor[j] > vetor[j+1])
+                    {
+                        troca(vetor, j, j+1);
+                    }
+                }
+            }
 	}
 	
 	
 	//ALGORITMO SELECTION SORT
 	public static void selectionSort(int[] vetor) {
-		//TODO ...
-		int tamanhoVetor = vetor.length;
+            //TODO ...
+            int tamanhoVetor = vetor.length;
 
-		for(int i=0; i<tamanhoVetor-1; i++)
-		{
-			int min = i;
-			for(int j=i+1; j<tamanhoVetor; j++)
-			{
-				if(vetor[j] < vetor[min])
-					min = j;
-			}
-			troca(vetor, i, min);
-		}
+            for(int i=0; i<tamanhoVetor-1; i++)
+            {
+                int min = i;
+                for(int j=i+1; j<tamanhoVetor; j++)
+                {
+                    if(vetor[j] < vetor[min])
+                        min = j;
+                }
+                troca(vetor, i, min);
+            }
 	}
 
 	
 	//ALGORITMO INSERTION SORT
 	public static void insertionSort(int[] vetor) {
-		//TODO ...
-		int tamanhoVetor = vetor.length;
+            //TODO ...
+            int tamanhoVetor = vetor.length;
 
-		for(int j=1; j<tamanhoVetor; j++)
-		{
-			int key = vetor[j];
-			int i = j-1;
-			while((i >= 0) && (vetor[i] >= key))
-			{
-				vetor[i+1] = vetor[i];
-				i= i-1;
-			}
-			vetor[i+1] = key;
-		}
+            for(int j=1; j<tamanhoVetor; j++)
+            {
+                int key = vetor[j];
+                int i = j-1;
+                while((i >= 0) && (vetor[i] >= key))
+                {
+                    vetor[i+1] = vetor[i];
+                    i= i-1;
+                }
+                vetor[i+1] = key;
+            }
 	}
 
 	public static void mergeTheTwoSortedLists(int[] vetor, int indiceInicio, int meio, int indiceFim)
 	{
-		int[] auxiliar = new int[vetor.length];
-		//Copiando parte ta lista que vai ser ordenada
-		for(int i=indiceInicio; i<=indiceFim; i++)
-		{
-			auxiliar[i] = vetor[i];
-		}
-		//indices Auxiliares.
-		int i = indiceInicio;
-		int j = meio +1;
-		int k = indiceInicio;
-		//junção das listas ordenadas
-		while((i<=meio) && (j<=indiceFim))
-		{
-			if(auxiliar[i] < auxiliar[j])
-			{
-				vetor[k] = auxiliar[i];
-				i++;
-			}
-			else
-			{
-				vetor[k] = auxiliar[j];
-				j++;
-			}
+            int[] auxiliar = new int[vetor.length];
+            //Copiando parte ta lista que vai ser ordenada
+            for(int i=indiceInicio; i<=indiceFim; i++)
+            {
+                auxiliar[i] = vetor[i];
+            }
+            //indices Auxiliares.
+            int i = indiceInicio;
+            int j = meio +1;
+            int k = indiceInicio;
+            //junção das listas ordenadas
+            while((i<=meio) && (j<=indiceFim))
+            {
+                if(auxiliar[i] < auxiliar[j])
+                {
+                    vetor[k] = auxiliar[i];
+                    i++;
+                }
+                else
+                {
+                    vetor[k] = auxiliar[j];
+                    j++;
+                }
 
-			k++;
-		}
-		//append de itens que n foram usados na junção
-		while(i <= meio)
-		{
-			vetor[k] = auxiliar[i];
-			i++;
-			k++;
-		}
-		//append de intens que n foram usados na junção
-		while(j <= indiceFim)
-		{
-			vetor[k] = auxiliar[j];
-			j++;
-			k++;
-		}
+                k++;
+            }
+            //append de itens que n foram usados na junção
+            while(i <= meio)
+            {
+                vetor[k] = auxiliar[i];
+                i++;
+                k++;
+            }
+            //append de intens que n foram usados na junção
+            while(j <= indiceFim)
+            {
+                vetor[k] = auxiliar[j];
+                j++;
+                k++;
+            }
 	}
         
         //Metodo Auxiliar para o mergeSorte receber como paramentro apenas um Vetor
@@ -216,21 +216,21 @@ public class BrincandoComOrdenacao {
 
 	public static int separar(int[] vetor, int esquerda, int direita)
 	{
-		int pivo = vetor[esquerda];
-		int i = esquerda + 1;
-		int j = direita;
+            int pivo = vetor[esquerda];
+            int i = esquerda + 1;
+            int j = direita;
 
-		while(i <= j)
-		{
-			if(vetor[i] <= pivo)
-				i++;
-			else if(vetor[j] > pivo)
-				j--;
-			else
-				troca(vetor, i, j);
-		}
-		troca(vetor, esquerda, j);
-		return j; //posição do pivo
+            while(i <= j)
+            {
+                if(vetor[i] <= pivo)
+                    i++;
+                else if(vetor[j] > pivo)
+                    j--;
+                else
+                    troca(vetor, i, j);
+            }
+            troca(vetor, esquerda, j);
+            return j; //posição do pivo
 	}
 	
         //Metodo auxiliar para o quickSort receber apenas um vetor como parametro.
@@ -246,11 +246,11 @@ public class BrincandoComOrdenacao {
         
 	//ALGORITMO QUICKSORT
 	public static void quickSort(int[] vetor) {
-		//TODO ...  
-                int esquerda = 0;
-                int direita = vetor.length -1;
-                
-		quickSortAux(vetor, esquerda, direita);
+            //TODO ...  
+            int esquerda = 0;
+            int direita = vetor.length -1;
+
+            quickSortAux(vetor, esquerda, direita);
 	}
         
         public static int acharDominio(int[] vetor)
@@ -269,25 +269,24 @@ public class BrincandoComOrdenacao {
 
 	//ALGORITMO COUNTING SORT
 	public static void countingSort(int[] vetor){
-		//TODO ...
-                int dominio = acharDominio(vetor) +1;
-                int[] vetorB = new int[vetor.length];
-		int[] vetorC = new int[dominio];
+            //TODO ...
+            int dominio = acharDominio(vetor) +1;
+            int[] vetorB = new int[vetor.length];
+            int[] vetorC = new int[dominio];
 
-		for(int j=0; j<vetor.length; j++)
-			vetorC[vetor[j]] = vetorC[vetor[j]] +1;
-		for(int i=1; i<dominio; i++)
-			vetorC[i] += vetorC[i-1];
-		for(int j=vetor.length-1; j>=0; j--)
-		{
-			vetorB[vetorC[vetor[j]]-1] = vetor[j];
-			vetorC[vetor[j]] = vetorC[vetor[j]] -1;
-		}
-                //Copiando o vetor de saida no vetor de entrada
-                for(int i=0; i<vetor.length; i++)
-                {
-                    vetor[i] = vetorB[i];
-                }
-	}
-    
+            for(int j=0; j<vetor.length; j++)
+                vetorC[vetor[j]] = vetorC[vetor[j]] +1;
+            for(int i=1; i<dominio; i++)
+                vetorC[i] += vetorC[i-1];
+            for(int j=vetor.length-1; j>=0; j--)
+            {
+                vetorB[vetorC[vetor[j]]-1] = vetor[j];
+                vetorC[vetor[j]] = vetorC[vetor[j]] -1;
+            }
+            //Copiando o vetor de saida no vetor de entrada
+            for(int i=0; i<vetor.length; i++)
+            {
+                vetor[i] = vetorB[i];
+            }
+	}   
 }
